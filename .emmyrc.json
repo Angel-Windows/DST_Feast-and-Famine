@@ -1,0 +1,26 @@
+{
+  "diagnostics": {
+    "globals": [
+      "GLOBAL",
+      "GetModConfigData",
+      "SpawnPrefab",
+      "TheWorld",
+      "ThePlayer",
+      "TUNING",
+      "AddPrefabPostInit",
+      "AddPrefabPostInitAny",
+      "AddStategraphPostInit",
+      "AddStategraphPostInitAny",
+      "AddComponentPostInit",
+      "AddComponentPostInitAny",
+      "AddClassPostConstruct",
+      "AddClassPostConstructAny",
+      "Ingredient",
+      "AddRecipe2",
+      "AddCookerRecipe"
+    ],
+    "disable": [
+      "unknown-global" 
+    ]
+  }
+}

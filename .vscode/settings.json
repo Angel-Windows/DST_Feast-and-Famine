@@ -1,0 +1,12 @@
+{
+    "stylua.targetReleaseVersion": "latest",
+    "Lua.diagnostics.globals": [
+        "GLOBAL",
+        "GetModConfigData",
+        "SpawnPrefab",
+        "ThePlayer",
+        "TheWorld",
+        "TUNING",
+        "AddPrefabPostInit",
+    ]
+}

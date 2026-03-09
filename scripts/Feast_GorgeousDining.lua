@@ -1,6 +1,7 @@
 local terriblytastythings = { -- "bubbletea",
-"flour", "syrup", "feast_cookpot", "honeys", "stick_pretzels", "cheese_goat", "eggs_faf", "meats_faf", "mushrooms_faf",
-"mealingstone", "hungerregenbuff", "sanityregenbuff", "breadbox"}
+    "flour", "syrup", "feast_cookpot", "honeys", "stick_pretzels", "cheese_goat", "eggs_faf", "meats_faf",
+    "mushrooms_faf",
+    "mealingstone", "hungerregenbuff", "sanityregenbuff", "breadbox" }
 
 for k, v in pairs(terriblytastythings) do
     table.insert(PrefabFiles, v)
@@ -23,7 +24,7 @@ local LEGION = GLOBAL.KnownModIndex:IsModEnabled("workshop-1392778117")
 -- NOTE: If the thing already had a tag with the same name, you will still overwrite the old value, unless keepoldvalues is true. E.g if fish already had a tag seafood with value 0.5 and now you use this function with value 1, the result will be 1.
 function InsertIngredientValues(names, tags, cancook, candry, keepoldvalues) -- if cancook or candry is true, the cooked/dried variant of the thing will also get the tags and the tags precook/dried.
     for _, name in pairs(names) do
-        if ingredients[name] == nil then -- if it is not cookable already, it will be nil. Following code is just a copy of the normal AddIngredientValues function
+        if ingredients[name] == nil then                                     -- if it is not cookable already, it will be nil. Following code is just a copy of the normal AddIngredientValues function
             ingredients[name] = {
                 tags = {}
             }
@@ -53,10 +54,11 @@ function InsertIngredientValues(names, tags, cancook, candry, keepoldvalues) -- 
                     ingredients[name .. "_dried"].tags[tagname] = tagval
                 end
             end
-        else -- but if there are already some tags, don't delete previous tags, just add the new ones. 
+        else                                                                        -- but if there are already some tags, don't delete previous tags, just add the new ones.
             for tagname, tagval in pairs(tags) do
                 if ingredients[name].tags[tagname] == nil or not keepoldvalues then -- only overwrite old value, if there is no old value, or if keepoldvalues is not true (will be not true by default)
-                    ingredients[name].tags[tagname] = tagval -- this will overwrite the old value, if there was one
+                    ingredients[name].tags[tagname] =
+                        tagval                                                      -- this will overwrite the old value, if there was one
                 end
                 -- print(name,tagname,tagval,ingtable[name].tags[tagname])
 
@@ -93,182 +95,182 @@ end
 
 require "Feast_ingredienttags"
 
-InsertIngredientValues({"humanmeat"}, {
+InsertIngredientValues({ "humanmeat" }, {
     meat = 1
 }, true, true, true)
-InsertIngredientValues({"moon_cap"}, {
+InsertIngredientValues({ "moon_cap" }, {
     mushrooms = 1
 }, true, false, true)
-InsertIngredientValues({"red_cap"}, {
+InsertIngredientValues({ "red_cap" }, {
     mushrooms = 1,
     mushrooms_red = 1
 }, true, false, true)
-InsertIngredientValues({"green_cap"}, {
+InsertIngredientValues({ "green_cap" }, {
     mushrooms = 1,
     mushrooms_green = 1
 }, true, false, true)
-InsertIngredientValues({"blue_cap"}, {
+InsertIngredientValues({ "blue_cap" }, {
     mushrooms = 1,
     mushrooms_blue = 1
 }, true, false, true)
-InsertIngredientValues({"red_chunk", "red_chunk_bloom"}, {
+InsertIngredientValues({ "red_chunk", "red_chunk_bloom" }, {
     mushrooms = 1,
     mushrooms_red = 1,
     veggie = 0.5
 }, false, false, true)
-InsertIngredientValues({"green_chunk", "green_chunk_bloom"}, {
+InsertIngredientValues({ "green_chunk", "green_chunk_bloom" }, {
     mushrooms = 1,
     mushrooms_green = 1,
     veggie = 0.5
 }, false, false, true)
-InsertIngredientValues({"blue_chunk", "blue_chunk_bloom"}, {
+InsertIngredientValues({ "blue_chunk", "blue_chunk_bloom" }, {
     mushrooms = 1,
     mushrooms_blue = 1,
     veggie = 0.5
 }, false, false, true)
-InsertIngredientValues({"trunk_summer", "trunk_winter", "trunk_cooked", "trunk_winter_cooked"}, {
+InsertIngredientValues({ "trunk_summer", "trunk_winter", "trunk_cooked", "trunk_winter_cooked" }, {
     meat = 1
 }, false, false, true)
-InsertIngredientValues({"honey"}, {
+InsertIngredientValues({ "honey" }, {
     honey = 1
 }, false, false, true)
-InsertIngredientValues({"honey_floral"}, {
+InsertIngredientValues({ "honey_floral" }, {
     sweetener = 1,
     honey = 1
 }, false, false, false)
-InsertIngredientValues({"honey_killer"}, {
+InsertIngredientValues({ "honey_killer" }, {
     sweetener = 1,
     honey = 1
 }, false, false, false)
-InsertIngredientValues({"honey_crystals"}, {
+InsertIngredientValues({ "honey_crystals" }, {
     inedible = 1,
     sugar = 1
 }, false, false, false)
-InsertIngredientValues({"corn"}, {
+InsertIngredientValues({ "corn" }, {
     sugar = 1
 }, false, false, true)
--- InsertIngredientValues({"sap"},{syrup=1},false,false,true) -- TODO: Sugarwood forest compatability 
-InsertIngredientValues({"syrup"}, {
+-- InsertIngredientValues({"sap"},{syrup=1},false,false,true) -- TODO: Sugarwood forest compatability
+InsertIngredientValues({ "syrup" }, {
     sweetener = 1
 }, false, false, false)
-InsertIngredientValues({"egg_monster"}, {
+InsertIngredientValues({ "egg_monster" }, {
     egg = 1,
     monster = 1
 }, true, false, false)
-InsertIngredientValues({"egg_plant"}, {
+InsertIngredientValues({ "egg_plant" }, {
     egg = 1,
     plantmeat = 1
 }, true, false, false)
-InsertIngredientValues({"plantmeat"}, {
+InsertIngredientValues({ "plantmeat" }, {
     plantmeat = 1
 }, true, false, true)
-InsertIngredientValues({"rocky_meat"}, {
+InsertIngredientValues({ "rocky_meat" }, {
     shellfish = 1,
     fish = 2
 }, false, false, true)
-InsertIngredientValues({"wobster_sheller_land"}, {
+InsertIngredientValues({ "wobster_sheller_land" }, {
     shellfish = 1
 }, false, false, true)
 if ISLAND or TROPICAL then
-    InsertIngredientValues({"lobster"}, {
+    InsertIngredientValues({ "lobster" }, {
         shellfish = 1
     }, false, false, true)
 end
-InsertIngredientValues({"glommerfuel"}, {}, false, false, true)
-InsertIngredientValues({"wheat"}, {
+InsertIngredientValues({ "glommerfuel" }, {}, false, false, true)
+InsertIngredientValues({ "wheat" }, {
     inedible = 2
 }, false, false, false)
-InsertIngredientValues({"seeds"}, {
+InsertIngredientValues({ "seeds" }, {
     inedible = 2
 }, true, false, true)
-InsertIngredientValues({"potato_seeds", "tomato_seeds", "carrot_seeds", "corn_seeds", "pumpkin_seeds",
-                        "watermelon_seeds", "asparagus_seeds", "eggplant_seeds", "onion_seeds", "garlic_seeds",
-                        "pepper_seeds", "dragonfruit_seeds"}, {
+InsertIngredientValues({ "potato_seeds", "tomato_seeds", "carrot_seeds", "corn_seeds", "pumpkin_seeds",
+    "watermelon_seeds", "asparagus_seeds", "eggplant_seeds", "onion_seeds", "garlic_seeds",
+    "pepper_seeds", "dragonfruit_seeds" }, {
     inedible = 2
 }, false, false, false)
-InsertIngredientValues({"pomegranate_seeds"}, {
+InsertIngredientValues({ "pomegranate_seeds" }, {
     fruit = 0.25
 }, false, false, false)
-InsertIngredientValues({"durian_seeds"}, {
+InsertIngredientValues({ "durian_seeds" }, {
     monster = 1
 }, false, false, false)
 if ISLAND then
-    InsertIngredientValues({"sweet_potato_seeds"}, {
+    InsertIngredientValues({ "sweet_potato_seeds" }, {
         inedible = 2
     }, false, false, false)
 end
 if LEGION then
-    InsertIngredientValues({"pineananas_seeds"}, {
+    InsertIngredientValues({ "pineananas_seeds" }, {
         inedible = 2
     }, false, false, false)
 end
-InsertIngredientValues({"flour"}, {
+InsertIngredientValues({ "flour" }, {
     veggie = 0.5,
     inedible = 1,
     flour = 1
 }, false, false, false)
-InsertIngredientValues({"pasta_dry"}, {
+InsertIngredientValues({ "pasta_dry" }, {
     noodle = 1
 }, false, false, false)
-InsertIngredientValues({"turnip"}, {
+InsertIngredientValues({ "turnip" }, {
     veggie = 1
 }, false, false, false)
-InsertIngredientValues({"carrot"}, {
+InsertIngredientValues({ "carrot" }, {
     carrot = 1
 }, true, false, true)
-InsertIngredientValues({"rock_avocado_fruit_ripe"}, {
+InsertIngredientValues({ "rock_avocado_fruit_ripe" }, {
     stone = 1
 }, true, false, true)
-InsertIngredientValues({"tomato_rock_dried"}, {
+InsertIngredientValues({ "tomato_rock_dried" }, {
     veggie = 1
 }, false, false, false)
-InsertIngredientValues({"fishbite_dried"}, {
+InsertIngredientValues({ "fishbite_dried" }, {
     fish = 0.5
 }, false, false, false)
-InsertIngredientValues({"fish_dried"}, {
+InsertIngredientValues({ "fish_dried" }, {
     fish = 1
 }, false, false, false)
-InsertIngredientValues({"cheese_goat"}, {
+InsertIngredientValues({ "cheese_goat" }, {
     cheese = 1
 }, false, false, false)
-InsertIngredientValues({"berries", "berries_juicy"}, {
+InsertIngredientValues({ "berries", "berries_juicy" }, {
     berries = 0.5
 }, true, false, true)
-InsertIngredientValues({"bigbird_meat"}, {
+InsertIngredientValues({ "bigbird_meat" }, {
     meat = 1,
     poultry = 1
 }, true, false, false)
-InsertIngredientValues({"chicken"}, {
+InsertIngredientValues({ "chicken" }, {
     meat = 0.5,
     poultry = 1
 }, false, false, false)
-InsertIngredientValues({"drumstick"}, {
+InsertIngredientValues({ "drumstick" }, {
     poultry = 1
 }, true, false, true)
-InsertIngredientValues({"rabbit"}, {
+InsertIngredientValues({ "rabbit" }, {
     meat = 0.5
 }, false, false, false)
-InsertIngredientValues({"manrabbit_tail"}, {
+InsertIngredientValues({ "manrabbit_tail" }, {
     inedible = 1
 }, false, false, false)
-InsertIngredientValues({"froglegs"}, {
+InsertIngredientValues({ "froglegs" }, {
     frogmeat = 1
 }, true, false, true)
-InsertIngredientValues({"toad_meat"}, {
+InsertIngredientValues({ "toad_meat" }, {
     meat = 1,
     frogmeat = 1
 }, true, false, false)
-InsertIngredientValues({"squid_meat"}, {
+InsertIngredientValues({ "squid_meat" }, {
     monster = 1,
     fish = 0.5
 }, true, false, false)
-InsertIngredientValues({"bear_meat"}, {
+InsertIngredientValues({ "bear_meat" }, {
     meat = 1.5
 }, true, false, false)
-InsertIngredientValues({"deer_meat"}, {
+InsertIngredientValues({ "deer_meat" }, {
     meat = 1.5
 }, true, false, false)
-InsertIngredientValues({"dragon_meat"}, {
+InsertIngredientValues({ "dragon_meat" }, {
     meat = 1
 }, true, false, false)
 
@@ -423,31 +425,31 @@ end)
 AddPrefabPostInit("beehive", function(inst)
     if inst.components.lootdropper then
         if GLOBAL.TheWorld.state.season == GLOBAL.SEASONS.SPRING then
-            inst.components.lootdropper:SetLoot({"honey_killer", "honey_killer", "honey_killer", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey_killer", "honey_killer", "honey_killer", "honeycomb" })
         elseif GLOBAL.TheWorld.state.season == GLOBAL.SEASONS.SUMMER then
-            inst.components.lootdropper:SetLoot({"honey_floral", "honey_floral", "honey_floral", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey_floral", "honey_floral", "honey_floral", "honeycomb" })
         else
-            inst.components.lootdropper:SetLoot({"honey", "honey", "honey", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey", "honey", "honey", "honeycomb" })
         end
 
         inst:WatchWorldState("isspring", function()
-            inst.components.lootdropper:SetLoot({"honey_killer", "honey_killer", "honey_killer", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey_killer", "honey_killer", "honey_killer", "honeycomb" })
         end) -- Seasonal Transitions
         inst:WatchWorldState("issummer", function()
-            inst.components.lootdropper:SetLoot({"honey_floral", "honey_floral", "honey_floral", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey_floral", "honey_floral", "honey_floral", "honeycomb" })
         end)
         inst:WatchWorldState("isautumn", function()
-            inst.components.lootdropper:SetLoot({"honey", "honey", "honey", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey", "honey", "honey", "honeycomb" })
         end)
         inst:WatchWorldState("iswinter", function()
-            inst.components.lootdropper:SetLoot({"honey", "honey", "honey", "honeycomb"})
+            inst.components.lootdropper:SetLoot({ "honey", "honey", "honey", "honeycomb" })
         end)
     end
 end)
 
 AddPrefabPostInit("wasphive", function(inst)
     if inst.components.lootdropper then
-        inst.components.lootdropper:SetLoot({"honey_killer", "honey_killer", "honey_killer", "honeycomb"})
+        inst.components.lootdropper:SetLoot({ "honey_killer", "honey_killer", "honey_killer", "honeycomb" })
     end
 end)
 
@@ -512,17 +514,17 @@ end
 local seedmin = GetModConfigData("config_SeedMin")
 local seedplus = GetModConfigData("config_SeedPlus")
 
-local invalid_foods = {"bird_egg", "bird_egg_cooked", "rottenegg", -- "monstermeat",
-"egg_monster", "egg_monster_cooked", -- "plantmeat",
-"egg_plant", "egg_plant_cooked"}
+local invalid_foods = { "bird_egg", "bird_egg_cooked", "rottenegg", -- "monstermeat",
+    "egg_monster", "egg_monster_cooked",                            -- "plantmeat",
+    "egg_plant", "egg_plant_cooked" }
 
 local function ShouldAcceptMonsterItem(inst, item)
     local seed_name = string.lower(item.prefab .. "_seeds")
 
     local can_accept = (item.components.edible and
-                           (GLOBAL.Prefabs[seed_name] or item.prefab == "seeds" or string.match(item.prefab, "_seeds") or
-                               (item.components.edible.foodtype == GLOBAL.FOODTYPE.MEAT and
-                                   not item:HasTag("preparedfood")))) or item.prefab == "wheat"
+        (GLOBAL.Prefabs[seed_name] or item.prefab == "seeds" or string.match(item.prefab, "_seeds") or
+            (item.components.edible.foodtype == GLOBAL.FOODTYPE.MEAT and
+                not item:HasTag("preparedfood")))) or item.prefab == "wheat"
 
     if table.contains(invalid_foods, item.prefab) then
         can_accept = false
@@ -538,7 +540,7 @@ end
 local function GetBird(inst)
     return (inst.components.occupiable and inst.components.occupiable:GetOccupant()) or nil
 end
-local function ShowFeedMessage(inst, giver, item, lootname)
+local function ShowFeedMessagea(inst, giver, item, lootname)
     if giver and giver.components.talker then
         local foodname = item:GetDisplayName()
         local loot = lootname or "something"
@@ -560,30 +562,22 @@ end
 
 local function DigestFoodMonster(inst, food, giver)
     -- OnFeed(inst, giver, food)
-    if food.components.edible.foodtype == GLOBAL.FOODTYPE.MEAT then
+    if (food.components.edible.foodtype == GLOBAL.FOODTYPE.MEAT) then
         local egg = nil
-
-        if food:HasTag("monstermeat") then
-            -- Мясо монстр: 20% шанс обычное яйцо, иначе монстр яйцо
-            if math.random() < 0.2 then
-                egg = inst.components.lootdropper:SpawnLootPrefab("bird_egg")
-            else
-                egg = inst.components.lootdropper:SpawnLootPrefab("egg_monster")
-            end
-        else
-            -- Обычное мясо: 20% шанс монстр яйцо, иначе обычное яйцо
-            if math.random() < 0.2 then
-                egg = inst.components.lootdropper:SpawnLootPrefab("egg_monster")
-            else
-                egg = inst.components.lootdropper:SpawnLootPrefab("bird_egg")
-            end
+        if (GetModConfigData("config_MonsterEggs") and food.prefab == "monstermeat" and math.random() > 0.04) then
+            egg = inst.components.lootdropper:SpawnLootPrefab("egg_monster")
+        elseif (GetModConfigData("config_LeafyEggs") and food.prefab == "plantmeat" and math.random() > 0.04) then
+            egg = inst.components.lootdropper:SpawnLootPrefab("egg_plant")
         end
 
+        if not egg then
+            egg = inst.components.lootdropper:SpawnLootPrefab("bird_egg")
+        end
+        -- ShowFeedMessage(inst, GetModConfigData("config_KitchenWheat"))
         if egg and giver and giver.components.talker then
-            ShowFeedMessage(inst, giver, food, egg.prefab)
+            ShowFeedMessagea(inst, giver, food, egg.prefab)
         end
-
-    elseif food.prefab == "wheat" then
+    elseif (food.prefab == "wheat") then
         if GetModConfigData("config_KitchenWheat") then
             inst._wheatcount = (inst._wheatcount or 0) + 1
             if inst._wheatcount >= 5 then
@@ -648,8 +642,8 @@ end
 AddPrefabPostInit("birdcage", DigestFoodMonsterInit)
 
 if GLOBAL.TUNING.FAFHONEYCRYSTALS ~= nil then
-    AllRecipes["spice_sugar"].ingredients = {Ingredient("honey_crystals", 3, "images/inventoryimages/feast_famine.xml",
-        "honey_crystals")}
+    AllRecipes["spice_sugar"].ingredients = { Ingredient("honey_crystals", 3, "images/inventoryimages/feast_famine.xml",
+        "honey_crystals") }
     AddPrefabPostInit("honey", HoneyCrystalsInit)
     AddPrefabPostInit("honey_floral", HoneyCrystalsInit)
     AddPrefabPostInit("honey_killer", HoneyCrystalsInit)
@@ -660,8 +654,8 @@ AddPrefabPostInit("watermelonicle", IcecreamFridgeInit)
 AddPrefabPostInit("bananapop", IcecreamFridgeInit)
 AddPrefabPostInit("goatmilk", GoatCheeseInit)
 
-local BREADS = {"bread", "bread_garlic", "bread_cheese", "bread_jam", "frogglebunwich", "bread_rocky", -- "bread_fish",
-"leafymeatburger", "barnaclepita", "frognewton"}
+local BREADS = { "bread", "bread_garlic", "bread_cheese", "bread_jam", "frogglebunwich", "bread_rocky", -- "bread_fish",
+    "leafymeatburger", "barnaclepita", "frognewton" }
 
 for k, v in pairs(BREADS) do
     AddPrefabPostInit(v, BreadBoxInit)
@@ -706,7 +700,7 @@ local syrup = {
     weight = 1,
     perishtime = nil,
     cooktime = 0.5,
-    tags = {"honeyed"},
+    tags = { "honeyed" },
     cookbook_atlas = "images/cookbook_syrup.xml"
     -- oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DUST_MOTH_FOOD
 }
@@ -782,19 +776,19 @@ cooking.GetRecipe("portablecookpot", "jellybean").test = function(cooker, names,
 end
 cooking.GetRecipe("cookpot", "icecream").test = function(cooker, names, tags)
     return tags.frozen and tags.dairy and tags.sweetener and not tags.meat and not tags.veggie and
-               not names.beefalo_milk and not tags.inedible and not tags.egg
+        not names.beefalo_milk and not tags.inedible and not tags.egg
 end -- Beefalo Milk and Cheese Nerf
 cooking.GetRecipe("portablecookpot", "icecream").test = function(cooker, names, tags)
     return tags.frozen and tags.dairy and tags.sweetener and not tags.meat and not tags.veggie and
-               not names.beefalo_milk and not tags.inedible and not tags.egg
+        not names.beefalo_milk and not tags.inedible and not tags.egg
 end -- Beefalo Milk and Cheese Nerf
 cooking.GetRecipe("cookpot", "powcake").test = function(cooker, names, tags)
     return names.twigs and tags.sweetener and
-               (names.corn or names.corn_cooked or names.oceanfish_small_5_inv or names.oceanfish_medium_5_inv)
+        (names.corn or names.corn_cooked or names.oceanfish_small_5_inv or names.oceanfish_medium_5_inv)
 end
 cooking.GetRecipe("portablecookpot", "powcake").test = function(cooker, names, tags)
     return names.twigs and tags.sweetener and
-               (names.corn or names.corn_cooked or names.oceanfish_small_5_inv or names.oceanfish_medium_5_inv)
+        (names.corn or names.corn_cooked or names.oceanfish_small_5_inv or names.oceanfish_medium_5_inv)
 end
 cooking.GetRecipe("cookpot", "fishsticks").health = TUNING.HEALING_MED
 cooking.GetRecipe("portablecookpot", "fishsticks").health = TUNING.HEALING_MED
@@ -921,11 +915,11 @@ end
 
 cooking.GetRecipe("cookpot", "koalefig_trunk").test = function(cooker, names, tags)
     return (names.trunk_summer or names.trunk_winter or names.trunk_cooked or names.trunk_winter_cooked) and
-               (names.fig or names.fig_cooked)
+        (names.fig or names.fig_cooked)
 end
 cooking.GetRecipe("portablecookpot", "koalefig_trunk").test = function(cooker, names, tags)
     return (names.trunk_summer or names.trunk_winter or names.trunk_cooked or names.trunk_winter_cooked) and
-               (names.fig or names.fig_cooked)
+        (names.fig or names.fig_cooked)
 end
 
 if MILK then
@@ -990,25 +984,25 @@ local function SortAfter(a, b, filter_name)
     SortRecipe(a, b, filter_name, 1)
 end
 
-local flour = AddRecipe2("flour", {Ingredient("wheat", 3, nil, nil, "quagmire_wheat.tex")}, TECH.FOODPROCESSING_ONE, {
+local flour = AddRecipe2("flour", { Ingredient("wheat", 3, nil, nil, "quagmire_wheat.tex") }, TECH.FOODPROCESSING_ONE, {
     nounlock = true
-}, {"COOKING", "REFINE"})
+}, { "COOKING", "REFINE" })
 SortBefore("flour", "wintersfeastoven", "COOKING")
 SortBefore("flour", "rope", "REFINE")
 
-local mealingstone = AddRecipe2("mealingstone", {Ingredient("cutstone", 4), Ingredient("hammer", 1)}, TECH.SCIENCE_TWO,
+local mealingstone = AddRecipe2("mealingstone", { Ingredient("cutstone", 4), Ingredient("hammer", 1) }, TECH.SCIENCE_TWO,
     {
         placer = "mealingstone_placer",
-        -- atlas = nil 
+        -- atlas = nil
         image = "quagmire_mealingstone.tex"
-    }, {"COOKING", "STRUCTURES"})
+    }, { "COOKING", "STRUCTURES" })
 SortBefore("mealingstone", "meatrack", "COOKING")
 SortBefore("mealingstone", "meatrack", "STRUCTURES")
 
-local breadbox = AddRecipe2("breadbox", {Ingredient("boards", 1), Ingredient("rope", 1)}, TECH.SCIENCE_ONE, {
+local breadbox = AddRecipe2("breadbox", { Ingredient("boards", 1), Ingredient("rope", 1) }, TECH.SCIENCE_ONE, {
     placer = "breadbox_placer",
     min_spacing = 1.5
-}, {"CONTAINERS", "COOKING", "STRUCTURES"})
+}, { "CONTAINERS", "COOKING", "STRUCTURES" })
 SortBefore("breadbox", "icebox", "CONTAINERS")
 SortBefore("breadbox", "icebox", "COOKING")
 SortBefore("breadbox", "icebox", "STRUCTURES")
