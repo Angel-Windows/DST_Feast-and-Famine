@@ -574,9 +574,9 @@ local function DigestFoodMonster(inst, food, giver)
             egg = inst.components.lootdropper:SpawnLootPrefab("bird_egg")
         end
         -- ShowFeedMessage(inst, GetModConfigData("config_KitchenWheat"))
-        if egg and giver and giver.components.talker then
-            ShowFeedMessagea(inst, giver, food, egg.prefab)
-        end
+        -- if egg and giver and giver.components.talker then
+        --     ShowFeedMessagea(inst, giver, food, egg.prefab)
+        -- end
     elseif (food.prefab == "wheat") then
         if GetModConfigData("config_KitchenWheat") then
             inst._wheatcount = (inst._wheatcount or 0) + 1
