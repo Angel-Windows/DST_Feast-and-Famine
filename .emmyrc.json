@@ -17,7 +17,15 @@
       "AddClassPostConstructAny",
       "Ingredient",
       "AddRecipe2",
-      "AddCookerRecipe"
+      "AddCookerRecipe",
+      "MakeHauntableLaunch",
+      "MakeInventoryFloatable",
+      "MakeSmallPropagator",
+      "MakeSmallBurnable",
+      "MakeInventoryPhysics",
+      "FOODTYPE",
+      "CreateEntity",
+      "Asset"
     ],
     "disable": [
       "unknown-global" 

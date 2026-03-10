@@ -25,13 +25,13 @@ local function crystalfn()
     end
 
     inst:AddComponent("tradable")
-
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.imagename = "honey_crystals"
 
     inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = 40 
 
     MakeHauntableLaunch(inst)
 

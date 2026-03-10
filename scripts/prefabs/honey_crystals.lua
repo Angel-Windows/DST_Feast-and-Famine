@@ -1,4 +1,6 @@
-local assets = {Asset("ANIM", "anim/crystalised_honey.zip")}
+local assets = {
+    Asset("ANIM", "anim/crystalised_honey.zip"),
+}
 
 local function fn()
     local inst = CreateEntity()
@@ -24,14 +26,15 @@ local function fn()
         return inst
     end
 
-    inst:AddComponent("tradable")
-
     inst:AddComponent("inspectable")
-
+    
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.imagename = "honey_crystals"
+    inst.components.inventoryitem.imagename = "honey_crystals" 
 
     inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = 40
+
+    inst:AddComponent("tradable")
 
     MakeHauntableLaunch(inst)
 
